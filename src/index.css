@@ -1,13 +1,241 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    margin: 0;
+    padding:0;
+    color: #303030;
+}
+
+img{
+    width:100%;
+    display: block;
+}
+
+/* Layout */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5em 1em;
+}
+
+.header{
+    text-align: center;
+}
+
+.header > h1 {
+    font-size: 2.75rem;
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
+}
+
+.inputForm{
+    display: grid;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.inputForm__tf{
+    display: block;
+    width:100%;
+    padding: 0.6em 1.8em;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    /* border-radius: 0.5rem; */
+    border: 2px solid #404040;
+    margin-bottom: 0.5em;
+}
+
+.inputForm__btn{
+    padding: 1.2em 2em;
+    background-color: #303030;
+    color: white;
+    /* border-radius: 0.5rem; */
+    line-height: 1.6;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    transition: all 250ms ease;
+    cursor: pointer;
+}
+
+.inputForm__tf:focus,
+.inputForm__btn:focus {
+    outline: none;
+}
+
+.inputForm__btn:hover {
+    background-color: #252525;;
+}
+
+@media (min-width: 600px) {
+    .header > h1{
+        font-size: 3rem;
+    }
+
+    .inputForm{
+        grid-template-columns: 3fr 1fr;
+        /* grid-column-gap: 0.5em; */
+    }
+
+    .inputForm__tf{
+        margin-bottom: 0;
+    }
+}
+
+/* styling the movie card section */
+.movie-cards-container{
+    margin-top: 2em;
+    padding: 1em 0;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1em;
+    background: #fff;
+    box-shadow: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+    0.125em 0.125em 0.25em rgba(0,0,0,.15);
+    margin-bottom: 2em;
+}
+
+.card__img{
+    max-width: 400px;
+    object-fit: cover;
+}
+
+.title{
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.release-date{
+    font-size: 1rem;
+    margin-top: 1em;
+}
+
+.ratings{
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+.release-date > span,
+.ratings > span{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight:bold;
+}
+
+.desc{
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 0.5em;
+}
+
+@media (min-width: 700px) {
+    .card {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5em;
+        text-align: left;
+    }
+
+    .card__img-container{
+        width: 35%;
+        align-self: center;
+    }
+
+    .card__content{
+        width:60%;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin-top: 0;
+    }
+
+    .release-date,
+    .ratings {
+        font-size: 1.2rem;
+    }
+
+    .desc{
+        font-size: 1.35rem;
+        max-height: 450px;
+        overflow-y: auto;
+    }
+}
+
+/* loading animations */
+.load-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+.img-container{
+    height:200px;
+    width:100%;
+    background: lightgray;
+}
+
+.rect{
+    width:100%;
+    height:40px;
+    background-color: lightgray;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.big-rect{
+    width:100%;
+    height:100px;
+    background-color: lightgray;
+}
+
+.img-container,
+.rect,
+.big-rect {
+    animation-name: loadFade;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media (min-width: 500px) {
+    .load-container{
+        flex-direction: row;
+    }
+
+    .img-container{
+        width: 30%;
+        height: 350px;
+        align-self: center;
+    }
+
+    .content-container{
+        width:65%;
+    }
+}
+
+
+@keyframes loadFade {
+    from {
+        opacity: 0.5;
+        transform: scaleX(0.95);
+    }
+
+    to {
+        opacity: 0.85;
+        transform: scaleX(1);
+    }
 }
